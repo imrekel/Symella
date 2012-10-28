@@ -1,0 +1,1057 @@
+/*****************************************************************************
+ * Copyright (C) 2005, 2006 Imre Kelényi, Bertalan Forstner
+ *-------------------------------------------------------------------
+ * This file is part of Symella
+ *
+ * Symella is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Symella is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Symella; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *****************************************************************************/
+
+/*
+* ============================================================================
+*  Name     : Symella.rss
+*  Part of  : Symella
+*  Created  : 3/12/2005 by Balázs Molnár, Imre Kelényi
+*  Description:
+*     	Resource definitions for Symella. If you want to have a console view
+*	(for diagnostics/debug purpose) uncomment the #define CONSOLE line.      
+* ============================================================================
+*/
+
+// uncomment the next line if to want to have a console view in the application
+// you have to uncomment the same line at the beginnning of SymellaAppUi.h too!
+//#define CONSOLE
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include "symella.hrh"
+#include "avkon.hrh"
+#include "symella.loc"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+#ifdef EKA2
+#include <appinfo.rh>
+#endif
+
+
+//  CONSTANTS  
+//#define ?constant   ?value
+
+
+//  MACROS  
+//#define ?macro
+
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="Symella"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    status_pane = r_symella_status_pane;
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_hotkeys
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_symella_hotkeys
+    {
+    control=
+        {
+        HOTKEY { command=EAknSoftkeyExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_consoleview
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symella_consoleview
+    {
+    hotkeys=r_symella_hotkeys;
+    menubar=r_symella_menubar_consoleview;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;    
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_menubar_consoleview
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symella_menubar_consoleview
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_symella_app_menu; txt="App"; }
+        //MENU_TITLE { menu_pane=r_symella_consoleview_menu; txt="View"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_searchview
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symella_searchview
+    {
+    hotkeys=r_symella_hotkeys;
+    menubar=r_symella_menubar_searchview;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT; 
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symella_webcacheview
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symella_webcacheview
+    {
+    hotkeys=r_symella_hotkeys;
+    menubar=r_symella_menubar_webcacheview;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_BACK; 
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symella_transfersview
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symella_transfersview
+    {
+    hotkeys=r_symella_hotkeys;
+    menubar=r_symella_menubar_transfersview;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT; 
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symella_connectionsview
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symella_connectionsview
+    {
+    hotkeys=r_symella_hotkeys;
+    menubar=r_symella_menubar_connectionsview;
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT; 
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symella_settingsview
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_symella_settingsview
+    {
+    hotkeys=r_symella_hotkeys;
+    cba=R_AVKON_SOFTKEYS_SELECT_BACK;
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_menubar_searchview
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symella_menubar_searchview
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_symella_app_menu; txt="App"; },
+        MENU_TITLE { menu_pane=r_symella_searchview_menu; txt="View"; }
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symella_menubar_webcacheview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symella_menubar_webcacheview
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_symella_webcacheview_menu; txt="View"; }
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symella_ordering_submenu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symella_ordering_submenu
+    {
+    items=
+        {
+        MENU_ITEM 
+            {
+            command = ESymellaCmdFileNameOrder;
+            txt = "By filename";
+            },
+        MENU_ITEM 
+            {
+            command = ESymellaCmdAddressCountOrder;
+            txt = "By hit count";
+            },
+        MENU_ITEM 
+            {
+            command = ESymellaCmdNoOrdering;
+            txt = "No ordering";
+            }
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symella_menubar_transfersview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symella_menubar_transfersview
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_symella_app_menu; txt="App"; },
+        MENU_TITLE { menu_pane=r_symella_transfersview_menu; txt="View"; }
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symella_menubar_connectionsview
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_symella_menubar_connectionsview
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_symella_app_menu; txt="App"; }
+        //MENU_TITLE { menu_pane=r_symella_connectionsview_menu; txt="View"; }
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symella_connectionsview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symella_connectionsview_menu
+    {
+    items=
+        {        	
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_searchview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symella_searchview_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=ESymellaCmdDownload; txt = qtn_searchview_option_download; },
+		MENU_ITEM { command=ESymellaCmdOrdering; txt = qtn_appl_option_sort_list; cascade = r_symella_ordering_submenu; flags = EEikMenuItemSeparatorAfter;}
+        };
+    }
+    
+//----------------------------------------------------
+//   
+//    r_symella_webcacheview_menu
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symella_webcacheview_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=ESymellaCmdWebcacheDetails; txt = "Details";},
+        MENU_ITEM { command=ESymellaCmdRemoveWebcache; txt = "Remove";},
+        MENU_ITEM { command=ESymellaCmdAddWebcache; txt = "Add webcache"; flags = EEikMenuItemSeparatorAfter; },
+        MENU_ITEM { command=ESymellaCmdAbout; txt = qtn_appl_option_about; },
+        MENU_ITEM { command=EAknSoftkeyExit; txt="Exit"; }
+        };
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_symella_transfersview_menu
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symella_transfersview_menu
+    {
+    items=
+        {
+		MENU_ITEM { command=ESymellaCmdOpenWithApp; txt = qtn_appl_option_openwithapp; },
+        MENU_ITEM { command=ESymellaCmdRemoveDownload; txt = qtn_transfersview_option_remove_download; flags = EEikMenuItemSeparatorAfter;}
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_app_menu
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_symella_app_menu
+    {
+    items=
+        {
+        MENU_ITEM { command=ESymellaCmdConnect; txt = qtn_appl_option_connect; },
+		MENU_ITEM { command=ESymellaCmdDisconnect; txt = qtn_appl_option_disconnect;},
+		MENU_ITEM { command=ESymellaCmdSearch; txt = qtn_appl_option_search; },
+		MENU_ITEM { command=ESymellaCmdSettings; txt = qtn_symella_settings; },
+		MENU_ITEM { command=ESymellaCmdConnectInfo; txt = qtn_appl_option_connection_info; },
+		MENU_ITEM { command=ESymellaCmdAddNode; txt = qtn_appl_option_add_peer; },       
+//		MENU_ITEM { command=ESymellaCmdSelectGenre; txt = "Select genre"; },
+ 		MENU_ITEM { command=ESymellaCmdResetHostCache; txt = qtn_appl_option_reset_hostcache; },
+		MENU_ITEM { command=ESymellaCmdAbout; txt = qtn_appl_option_about; },
+        MENU_ITEM { command=EAknSoftkeyExit; txt="Exit"; }
+        };
+    }
+
+RESOURCE STATUS_PANE_APP_MODEL r_symella_status_pane
+    {
+	panes=
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidNavi;
+			type = EAknCtNaviPane;
+			resource = r_symella_navi_decorator;
+			}
+		};
+    }
+
+//----------------------------------------------------
+//   
+//    r_symella_navi_decorator
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE NAVI_DECORATOR r_symella_navi_decorator
+    {
+    type = ENaviDecoratorControlTabGroup;
+    control = TAB_GROUP
+		{
+		tab_width = EAknTabWidthWithThreeLongTabs;
+		active = 0;
+		tabs = 	{
+			TAB
+			{
+                		id = ESymellaConnectionsTab;
+		                txt = qtn_connectionsview_tab;
+			},
+			TAB
+			{
+                		id = ESymellaSearchViewTab;
+		                txt = qtn_searchview_tab;
+			},
+			TAB
+			{
+		                id = ESymellaTransfersViewTab;
+                		txt = qtn_transfersview_tab;
+			}
+#if defined(CONSOLE)
+			,TAB
+			{
+						id = ESymellaConsoleViewTab; // from application hrh
+               			txt = qtn_consoleview_tab;
+	        }
+#endif
+			};
+		};
+	}
+
+// ---------------------------------------------------------
+//   
+//   r_search_query
+//   Query dialog for a search request
+//
+// ---------------------------------------------------------
+//
+RESOURCE DIALOG r_search_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                label = "Search for";
+                control = EDWIN
+                    {
+                    maxlength = 128;
+                    };
+                };
+            }
+        };
+    }
+    
+ // ---------------------------------------------------------
+//   
+//   r_add_webcache_query
+//   Query dialog for a search request
+//
+// ---------------------------------------------------------
+//
+RESOURCE DIALOG r_add_webcache_query
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EDataLayout;
+                label = "Webcache address";
+                control = EDWIN
+                    {
+                    maxlength = 128;
+                    };
+                };
+            }
+        };
+    }
+
+
+// ---------------------------------------------------------
+//
+// r_add_node_dialog
+// Dialog for connection details
+//
+// ---------------------------------------------------------
+
+RESOURCE DIALOG r_add_node_dialog
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = ESymellaAddNodeAddressEdwin;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EMultiDataFirstEdwin;
+                label = "Node IP";
+                control = EDWIN
+                    {
+                    flags = EEikEdwinNoHorizScrolling | EEikEdwinResizable;
+                    width = 20;
+                    lines = 1;
+                    maxlength = 100;
+                    default_input_mode = EAknEditorNumericInputMode;
+                    };
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtMultilineQuery;
+            id = ESymellaAddNodePortEdwin;
+            control = AVKON_DATA_QUERY
+                {
+                layout = EMultiDataSecondNumEd;
+                label = "Port Number";
+			    control = AVKON_INTEGER_EDWIN
+			        {
+                        min = 0;
+				        max = 65535;
+			        };
+                };
+            }
+        };
+
+    }
+    
+// ----------------------------------------------------------------------------
+//
+//    message dialog for displaying more text
+//
+// ----------------------------------------------------------------------------
+RESOURCE DIALOG r_message_query
+{
+        flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+        buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+        items=
+        {
+                DLG_LINE
+                {
+                        type = EAknCtPopupHeadingPane;
+                        id = EAknMessageQueryHeaderId;
+                        itemflags = EEikDlgItemNonFocusing;
+                        control = AVKON_HEADING
+                        {
+                        };
+                },
+                DLG_LINE
+                {
+                        type = EAknCtMessageQuery;
+                        id = EAknMessageQueryContentId;
+                        control = AVKON_MESSAGE_QUERY
+                        {
+                        };
+                }
+        };
+}
+
+// ----------------------------------------------------------------------------
+//
+//    r_info_note
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_info_note
+  {
+  flags = EGeneralQueryFlags;
+  buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtNote;
+      id = ESymellaHitInfoNote;
+      control = AVKON_NOTE
+        {
+        layout = EGeneralLayout;        
+        };
+      }
+    };
+  }
+  
+// ----------------------------------------------------------------------------
+//
+//    r_connection_info_note
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_connection_info_note
+  {
+  flags = EGeneralQueryFlags;
+  buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtNote;
+      id = ESymellaConnectionInfoNote;
+      control = AVKON_NOTE
+        {
+        layout = EGeneralLayout;        
+        };
+      }
+    };
+  }
+
+// ----------------------------------------------------------------------------
+//
+//    r_general_query
+//
+// ----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_general_query
+  {
+  flags = EGeneralQueryFlags;
+  buttons = R_AVKON_SOFTKEYS_YES_NO;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtQuery;
+      id = ESymellaOverwriteQuery;
+      control = AVKON_CONFIRMATION_QUERY
+        {
+        layout = EConfirmationQueryLayout;        
+        };
+      }
+    };
+  }    
+
+	
+//symella settings list
+RESOURCE AVKON_SETTING_ITEM_LIST r_symella_setting_item_list
+	{
+	title = qtn_symella_settings;
+	flags = EAknSettingItemIncludeHiddenInOrdinal;
+	items =
+		{
+		/*AVKON_SETTING_ITEM
+			{
+			identifier = ESymellaSettingPort;
+			name = qtn_symella_settings_port;
+			setting_page_resource = r_symella_setting_port_page;
+			},*/		
+		AVKON_SETTING_ITEM
+			{
+			identifier = ESymellaSettingDestDir;
+			name = "Download files to";
+			},
+		AVKON_SETTING_ITEM
+            {
+            identifier = ESymellaSettingNetworkConnection;
+			name = "Network connection";     
+            },
+        AVKON_SETTING_ITEM
+            {
+            identifier = ESymellaSettingWebcaches;
+			name = "Webcaches";     
+            },
+		AVKON_SETTING_ITEM
+			{
+			identifier = ESymellaSettingMaxStoredHits;
+			name = qtn_symella_settings_maxstoredhits;
+			setting_page_resource = r_symella_setting_maxstoredhits_page;
+			},
+		AVKON_SETTING_ITEM
+			{
+			identifier = ESymellaSettingLowestNonDeletableHitCount;
+			name = qtn_symella_settings_lowestnondeletablehitcount;
+			setting_page_resource = r_symella_setting_lowestnondeletablehitcount_page;
+			},
+		AVKON_SETTING_ITEM
+			{
+			identifier = ESymellaSettingEnableConnectionProfiling;
+			name = qtn_symella_settings_enableconnectionprofiling;
+			setting_page_resource = r_symella_setting_enableconnectionprofiling_page;
+			associated_resource = r_symella_setting_enableconnectionprofiling_popup_texts;
+			}
+
+		};
+	}
+	
+//symella settings - use GWC
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_usegwc_page
+	{
+	type = EAknCtPopupSettingList;
+	}
+	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symella_setting_usegwc_popup_texts
+	{
+	setting_texts_resource = r_symella_setting_usegwc_yes_no_texts;
+	popped_up_texts_resource = r_symella_setting_usegwc_yes_no_texts_popped_up;
+	}
+
+RESOURCE ARRAY r_symella_setting_usegwc_yes_no_texts
+	{
+	items=
+		{
+		AVKON_ENUMERATED_TEXT { value=1; text = qtn_symella_settings_usegwc_yes; },
+		AVKON_ENUMERATED_TEXT { value=0; text = qtn_symella_settings_usegwc_no; }
+		};
+	}
+
+RESOURCE ARRAY r_symella_setting_usegwc_yes_no_texts_popped_up
+	{
+	items = 
+		{
+		LBUF { txt = qtn_symella_settings_usegwc_yes; },
+		LBUF { txt = qtn_symella_settings_usegwc_no; }
+		};
+	}
+	
+//symella settings - use Swarming
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_useswarming_page
+	{
+	type = EAknCtPopupSettingList;
+	}
+	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symella_setting_useswarming_popup_texts
+	{
+	setting_texts_resource = r_symella_setting_useswarming_yes_no_texts;
+	popped_up_texts_resource = r_symella_setting_useswarming_yes_no_texts_popped_up;
+	}
+
+RESOURCE ARRAY r_symella_setting_useswarming_yes_no_texts
+	{
+	items=
+		{
+		AVKON_ENUMERATED_TEXT { value=1; text = qtn_symella_settings_useswarming_yes; },
+		AVKON_ENUMERATED_TEXT { value=0; text = qtn_symella_settings_useswarming_no; }
+		};
+	}
+
+RESOURCE ARRAY r_symella_setting_useswarming_yes_no_texts_popped_up
+	{
+	items = 
+		{
+		LBUF { txt = qtn_symella_settings_useswarming_yes; },
+		LBUF { txt = qtn_symella_settings_useswarming_no; }
+		};
+	}
+
+
+
+//symella settings - enableprofiling
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_enableconnectionprofiling_page
+	{
+	type = EAknCtPopupSettingList;
+	}
+	
+RESOURCE AVKON_POPUP_SETTING_TEXTS r_symella_setting_enableconnectionprofiling_popup_texts
+	{
+	setting_texts_resource = r_symella_setting_enableconnectionprofiling_yes_no_texts;
+	popped_up_texts_resource = r_symella_setting_enableconnectionprofiling_yes_no_texts_popped_up;
+	}
+
+RESOURCE ARRAY r_symella_setting_enableconnectionprofiling_yes_no_texts
+	{
+	items=
+		{
+		AVKON_ENUMERATED_TEXT { value=1; text = qtn_symella_settings_enableconnectionprofiling_yes; },
+		AVKON_ENUMERATED_TEXT { value=0; text = qtn_symella_settings_enableconnectionprofiling_no; }
+		};
+	}
+
+RESOURCE ARRAY r_symella_setting_enableconnectionprofiling_yes_no_texts_popped_up
+	{
+	items = 
+		{
+		LBUF { txt = qtn_symella_settings_enableconnectionprofiling_yes; },
+		LBUF { txt = qtn_symella_settings_enableconnectionprofiling_no; }
+		};
+	}
+
+
+
+
+//symella settings - port
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_port_page
+	{
+	label = qtn_symella_settings_port;
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symella_setting_port_editor;
+	}
+	
+//symella settings - port editor
+RESOURCE AVKON_INTEGER_EDWIN r_symella_setting_port_editor
+	{
+	min=0;
+	max=99999;
+	}
+	
+//symella settings - maxstoredhits
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_maxstoredhits_page
+	{
+	label = qtn_symella_settings_maxstoredhits;
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symella_setting_maxstoredhits_editor;
+	}
+	
+//symella settings - maxstoredhits editor
+RESOURCE AVKON_INTEGER_EDWIN r_symella_setting_maxstoredhits_editor
+	{
+	min=10;
+	max=5000;
+	}
+
+//symella settings - lowestnondeletablehitcount
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_lowestnondeletablehitcount_page
+	{
+	label = qtn_symella_settings_lowestnondeletablehitcount;
+	type = EAknCtIntegerEdwin;
+	editor_resource_id = r_symella_setting_lowestnondeletablehitcount_editor;	
+	}
+	
+//symella settings - lowestnondeletablehitcount editor
+RESOURCE AVKON_INTEGER_EDWIN r_symella_setting_lowestnondeletablehitcount_editor
+	{
+	min=0;
+	max=10;
+	}
+
+//symella settings - peers
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_peers_page
+	{
+	label = qtn_symella_settings_peers;
+	type = EEikCtEdwin;
+	editor_resource_id = r_symella_setting_peers_editor;
+	}
+
+//symella settings - peers editor
+RESOURCE EDWIN r_symella_setting_peers_editor
+	{
+    lines = 15;
+    maxlength = 1000;
+	}
+
+//symella settings - gwebcaches
+RESOURCE AVKON_SETTING_PAGE r_symella_setting_gwebcaches_page
+	{
+	label = qtn_symella_settings_gwebcaches;
+	type = EEikCtEdwin;
+	editor_resource_id = r_symella_setting_gwebcaches_editor;
+	}
+
+//symella settings - gwebcaches editor
+RESOURCE EDWIN r_symella_setting_gwebcaches_editor
+	{
+    lines = 15;
+    maxlength = 1000;
+	}
+
+RESOURCE AVKON_LIST_QUERY r_symella_genre_selection_list
+{
+  flags = EGeneralQueryFlags;
+  softkeys = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items = 
+    {
+      DLG_LINE	
+      {
+        type = EAknCtListQueryControl;
+        id = EListQueryControl;
+
+        control = AVKON_LIST_QUERY_CONTROL
+        {
+          listtype = EAknCtSinglePopupMenuListBox;
+          heading = "Select genre:";
+          listbox =
+            AVKON_LIST_QUERY_LIST
+            {
+              array_id = r_symella_genre_selection_list_array;
+            };
+        };
+      }
+
+    };
+}
+
+
+RESOURCE ARRAY r_symella_genre_selection_list_array
+{
+  items = {
+  LBUF {txt = "Blues"; },
+  LBUF {txt = "Classic Rock"; },
+  LBUF {txt = "Country"; },
+  LBUF {txt = "Dance";},
+  LBUF {txt = "Disco";},
+  LBUF {txt = "Funk";},
+  LBUF {txt = "Grunge";},
+  LBUF {txt = "Hip-Hop";},
+  LBUF {txt = "Jazz";},
+  LBUF {txt = "Metal";},
+  LBUF {txt = "New Age";},
+  LBUF {txt = "Oldies";},
+  LBUF {txt = "Other";},
+  LBUF {txt = "Pop";},
+  LBUF {txt = "R&B";},
+  LBUF {txt = "Rap";},
+  LBUF {txt = "Reggae";},
+  LBUF {txt = "Rock";},
+  LBUF {txt = "Techno";},
+  LBUF {txt = "Industrial";},
+  LBUF {txt = "Alternative";},
+  LBUF {txt = "Ska";},
+  LBUF {txt = "Death Metal";},
+  LBUF {txt = "Pranks";},
+  LBUF {txt = "Soundtrack";},
+  LBUF {txt = "Euro-Techno";},
+  LBUF {txt = "Ambient";},
+  LBUF {txt = "Trip-Hop";},
+  LBUF {txt = "Vocal";},
+  LBUF {txt = "Jazz+Funk";},
+  LBUF {txt = "Fusion";},
+  LBUF {txt = "Trance";},
+  LBUF {txt = "Classical";},
+  LBUF {txt = "Instrumental";},
+  LBUF {txt = "Acid";},
+  LBUF {txt = "House";},
+  LBUF {txt = "Game";},
+  LBUF {txt = "Sound Clip";},
+  LBUF {txt = "Gospel";},
+  LBUF {txt = "Noise";},
+  LBUF {txt = "Alternative Rock";},
+  LBUF {txt = "Bass";},
+  LBUF {txt = "Soul";},
+  LBUF {txt = "Punk";},
+  LBUF {txt = "Space";},
+  LBUF {txt = "Meditative";},
+  LBUF {txt = "Instrumental Pop";},
+  LBUF {txt = "Instrumental Rock";},
+  LBUF {txt = "Ethnic";},
+  LBUF {txt = "Gothic";},
+  LBUF {txt = "Darkwave";},
+  LBUF {txt = "Techno-Industrial";},
+  LBUF {txt = "Electronic";},
+  LBUF {txt = "Pop-Folk";},
+  LBUF {txt = "Eurodance";},
+  LBUF {txt = "Dream";},
+  LBUF {txt = "Southern Rock";},
+  LBUF {txt = "Comedy";},
+  LBUF {txt = "Cult";},
+  LBUF {txt = "Gangsta";},
+  LBUF {txt = "Top 40";},
+  LBUF {txt = "Christian Rap";},
+  LBUF {txt = "Pop/Funk";},
+  LBUF {txt = "Jungle";},
+  LBUF {txt = "Native US";},
+  LBUF {txt = "Cabaret";},
+  LBUF {txt = "New Wave";},
+  LBUF {txt = "Psychadelic";},
+  LBUF {txt = "Rave";},
+  LBUF {txt = "Showtunes";},
+  LBUF {txt = "Trailer";},
+  LBUF {txt = "Lo-Fi";},
+  LBUF {txt = "Tribal";},
+  LBUF {txt = "Acid Punk";},
+  LBUF {txt = "Acid Jazz";},
+  LBUF {txt = "Polka";},
+  LBUF {txt = "Retro";},
+  LBUF {txt = "Musical";},
+  LBUF {txt = "Rock & Roll";},
+  LBUF {txt = "Hard Rock";},
+  LBUF {txt = "Folk";},
+  LBUF {txt = "Folk-Rock";},
+  LBUF {txt = "National Folk";},
+  LBUF {txt = "Swing";},
+  LBUF {txt = "Fast Fusion";},
+  LBUF {txt = "Bebob";},
+  LBUF {txt = "Latin";},
+  LBUF {txt = "Revival";},
+  LBUF {txt = "Celtic";},
+  LBUF {txt = "Bluegrass";},
+  LBUF {txt = "Avantgarde";},
+  LBUF {txt = "Gothic Rock";},
+  LBUF {txt = "Progressive Rock";},
+  LBUF {txt = "Psychedelic Rock";},
+  LBUF {txt = "Symphonic Rock";},
+  LBUF {txt = "Slow Rock";},
+  LBUF {txt = "Big Band";},
+  LBUF {txt = "Chorus";},
+  LBUF {txt = "Easy Listening";},
+  LBUF {txt = "Acoustic";},
+  LBUF {txt = "Humour";},
+  LBUF {txt = "Speech";},
+  LBUF {txt = "Chanson";},
+  LBUF {txt = "Opera";},
+  LBUF {txt = "Chamber Music";},
+  LBUF {txt = "Sonata";},
+  LBUF {txt = "Symphony";},
+  LBUF {txt = "Booty Bass";},
+  LBUF {txt = "Primus";},
+  LBUF {txt = "Porn Groove";},
+  LBUF {txt = "Satire";},
+  LBUF {txt = "Slow Jam";},
+  LBUF {txt = "Club";},
+  LBUF {txt = "Tango";},
+  LBUF {txt = "Samba";},
+  LBUF {txt = "Folklore";},
+  LBUF {txt = "Ballad";},
+  LBUF {txt = "Power Ballad";},
+  LBUF {txt = "Rhytmic Soul";},
+  LBUF {txt = "Freestyle";},
+  LBUF {txt = "Duet";},
+  LBUF {txt = "Punk Rock";},
+  LBUF {txt = "Drum Solo";},
+  LBUF {txt = "Acapella";},
+  LBUF {txt = "Euro-House";},
+  LBUF {txt = "Dance Hall";},
+  LBUF {txt = "Goa";},
+  LBUF {txt = "Drum & Bass";},
+  LBUF {txt = "Club-House";},
+  LBUF {txt = "Hardcore";},
+  LBUF {txt = "Terror";},
+  LBUF {txt = "Indie";},
+  LBUF {txt = "BritPop";},
+  LBUF {txt = "Negerpunk";},
+  LBUF {txt = "Polsk Punk";},
+  LBUF {txt = "Beat";},
+  LBUF {txt = "Christian Gangsta Rap";},
+  LBUF {txt = "Heavy Metal";},
+  LBUF {txt = "Black Metal";},
+  LBUF {txt = "Crossover";},
+  LBUF {txt = "Contemporary Christian";},
+  LBUF {txt = "Christian Rock";},
+  LBUF {txt = "Merengue";},
+  LBUF {txt = "Salsa";},
+  LBUF {txt = "Trash Metal";},
+  LBUF {txt = "Anime";},
+  LBUF {txt = "Jpop";},
+  LBUF {txt = "Synthpop";}
+
+};
+}
+
+#ifdef EKA2
+// ---------------------------------------------------------
+// 
+//    r_lai
+//
+// ---------------------------------------------------------
+RESOURCE LOCALISABLE_APP_INFO r_lai
+    {
+    short_caption = "Symella";
+    caption_and_icon =
+        {
+        CAPTION_AND_ICON_INFO
+            {
+            caption = "Symella";
+            number_of_icons = 1;
+            icon_file = "\\resource\\apps\\symella_icon.mif";
+            }
+        };
+    }
+#endif
+	
+// End of File

@@ -1,0 +1,109 @@
+/*****************************************************************************
+ * Copyright (C) 2005, 2006 Imre Kelényi, Bertalan Forstner
+ *-------------------------------------------------------------------
+ * This file is part of Symella
+ *
+ * Symella is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Symella is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Symella; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *****************************************************************************/
+
+/*
+* ============================================================================
+*  Name     : symella.loc
+*  Part of  : Symella
+*  Created  : 3/12/2005 by Balázs Molnár, Imre Kelényi
+*  Description:
+*     This is a localisation file for Symella
+* ============================================================================
+*/
+
+// LOCALISATION STRINGS
+
+//d:Command in options menu.
+//d:Example application spesific command.
+//l:list_single_popup_submenu_pane_1
+//
+#define qtn_appl_option_about "About"
+
+#define qtn_appl_option_openwithapp "Open"
+
+#define qtn_appl_option_connect "Connect"
+
+#define qtn_appl_option_disconnect "Disconnect"
+
+#define qtn_appl_option_connection_info "Connection info"
+
+#define qtn_appl_option_search "Search"
+
+#define qtn_searchview_option_download "Download"
+
+#define qtn_transfersview_option_remove_download "Cancel download"
+
+#define qtn_appl_option_reset_hostcache "Reset hostcache"
+
+#define qtn_appl_option_add_peer "Add peer"
+
+#define qtn_appl_option_sort_list "Sort list"
+
+//d:Command in options menu.
+//d:Example command for view 1.
+//l:list_single_popup_submenu_pane_1
+//
+//#define qtn_view1_option_item "<View1 spesific menu item>"
+
+//d:Command in options menu.
+//d:Example command for view 2.
+//l:list_single_popup_submenu_pane_1
+//
+#define qtn_view2_option_item "<View2 spesific menu item>"
+
+//d:Name of the view 1 tab.
+//d:
+//l:
+//
+#define qtn_consoleview_tab "Console"
+
+//d:Name of the view 2 tab.
+//d:
+//l:
+//
+#define qtn_connectionsview_tab "Connections"
+#define qtn_searchview_tab "Search"
+
+#define qtn_transfersview_tab "Downloads"
+
+// example caption strings for app
+#define qtn_app_caption_string "Symella"
+
+#define qtn_app_short_caption_string "Symella"
+#define qtn_symella_settings "Settings"
+#define qtn_symella_settings_port "Address Port"
+#define qtn_symella_settings_peers "Default peers"
+#define qtn_symella_settings_gwebcaches "GWebCache URLs"
+#define qtn_symella_settings_destdir "Download directory"
+#define qtn_symella_settings_maxstoredhits "Max stored hits"
+#define qtn_symella_settings_lowestnondeletablehitcount "Lowest undeleted hit count"
+#define qtn_symella_settings_usegwc "Use GWebCache at connect"
+#define qtn_symella_settings_usegwc_yes "Use"
+#define qtn_symella_settings_usegwc_no "Don't use"
+#define qtn_symella_settings_useswarming "Use swarming at download"
+#define qtn_symella_settings_useswarming_yes "Use"
+#define qtn_symella_settings_useswarming_no "Don't use"
+#define qtn_symella_settings_enableconnectionprofiling "Enable profiling"
+#define qtn_symella_settings_enableconnectionprofiling_yes "Yes"
+#define qtn_symella_settings_enableconnectionprofiling_no "No (not recommended)"
+
+
+
+// End of File

@@ -1,0 +1,1 @@
+This Gnutella client is equipped with the SemPeer protocol extension in order to increase the hit rate and decrease your network traffic when cooperating with SemPeer-enabled Peers, based on your field of interest. More Information can be found on the official Symella homepage.

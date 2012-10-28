@@ -1,0 +1,4 @@
+Symella, Copyright (C) 2005-2012 Imre Kelenyi, Bertalan Forstner (AMORG)
+Symella comes with ABSOLUTELY NO WARRANTY; This is free software, and you are welcome to redistribute it under certain conditions. Read the license received along with the application for more details.
+To improve mobile Peer-to-Peer application performance with fine-tuning the protocol, Symella authors might gather anonym usage profile if enabled.
+Download newest version from http://symella.aut.bme.hu

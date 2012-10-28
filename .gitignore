@@ -1,0 +1,7 @@
+*.sis
+*.sisx
+.cproject
+.project
+.metadata/
+ABLD.BAT
+nvgencoder.log

@@ -1,0 +1,61 @@
+;****************************************************************************
+; Copyright (C) 2005, 2006 Imre Kelényi, Bertalan Forstner
+; -------------------------------------------------------------------
+; This file is part of Symella
+;
+; Symella is free software; you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation; either version 2 of the License, or
+; (at your option) any later version.
+;
+; Symella is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with Symella; if not, write to the Free Software
+; Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+;****************************************************************************
+
+;
+; Installation file for Symella application
+;
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"Symella"},(0xA0001771),1,42,0
+
+; Localised Vendor name 
+%{"Bertalan Forstner-EN"} 
+; Unique Vendor name 
+:"Bertalan Forstner"
+
+;Supports S60 release 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Supports S60 release 5.0
+[0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+;Supports Symbian^3 and Anna
+[0x20022E6D], 0, 0, 0, {"Series60ProductID"}
+
+;Supports Symbian Belle
+[0x2003A678], 0, 0, 0, {"Series60ProductID"}
+
+;
+; For Symbian 9.1 and later (SDK 3rd)
+;
+"$(EPOCROOT)epoc32\release\gcce\urel\Symella.exe" -"!:\sys\bin\Symella.exe"
+"$(EPOCROOT)epoc32\data\z\resource\apps\Symella.rsc" -"!:\resource\apps\Symella.rsc"
+"$(EPOCROOT)epoc32\data\z\private\10003a3f\apps\Symella_reg.rsc" -"!:\private\10003a3f\import\apps\Symella_reg.rsc" 
+"$(EPOCROOT)epoc32\data\z\resource\apps\symella_icon.mif" -"!:\resource\apps\symella_icon.mif"
+;"\Symbian\9.1\S60_3rd_MR\epoc32\release\winscw\udeb\z\resource\apps\symella_icon.mif" -"!:\resource\apps\symella_icon.mif"
+""         -"C:\private\A0001771\gwebcaches.cfg",FILENULL
+""         -"C:\private\A0001771\hostcaches.cfg",FILENULL
+""         -"C:\private\A0001771\settings.cfg",FILENULL
+"license_notice.txt" - "", FILETEXT, TEXTCONTINUE
+;"sempeernotice.txt" - "", FILETEXT, TEXTCONTINUE
