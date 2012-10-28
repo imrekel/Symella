@@ -30,12 +30,9 @@
 #{"Symella"},(0xA0001771),1,42,0
 
 ; Localised Vendor name 
-%{"Bertalan Forstner-EN"} 
+%{"BME AUT"} 
 ; Unique Vendor name 
-:"Bertalan Forstner"
-
-;Supports S60 release 3.0
-[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+:"BME AUT"
 
 ;Supports S60 release 5.0
 [0x1028315F], 0, 0, 0, {"Series60ProductID"}
@@ -58,4 +55,3 @@
 ""         -"C:\private\A0001771\hostcaches.cfg",FILENULL
 ""         -"C:\private\A0001771\settings.cfg",FILENULL
 "license_notice.txt" - "", FILETEXT, TEXTCONTINUE
-;"sempeernotice.txt" - "", FILETEXT, TEXTCONTINUE
